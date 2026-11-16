@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charmberry | Small Crafts, Big Smiles!</title>
+<style>
+:root{--lav:#b99add;--lav-dark:#76539c;--pink:#f4bfd5;--cream:#fffaff;--ink:#49365c;--line:#eadcf6}
+*{box-sizing:border-box}body{margin:0;font-family: "Trebuchet MS",Arial,sans-serif;color:var(--ink);background:#fffaff}
+header{background:linear-gradient(120deg,#eee2ff,#ffe5f0);padding:22px 5%;text-align:center;border-bottom:1px solid var(--line)}
+.brand{font-family:Georgia,serif;font-style:italic;font-size:clamp(2.4rem,7vw,4rem);color:var(--lav-dark);margin:0}
+.tag{margin:6px 0 0;color:#9b6597;letter-spacing:.08em}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+nav a,.btn{border:0;border-radius:999px;padding:11px 18px;background:white;color:var(--lav-dark);font-weight:bold;text-decoration:none;cursor:pointer;box-shadow:0 3px 12px #8e69a51c}
+.hero{padding:54px 6%;text-align:center;background:radial-gradient(circle at 20% 20%,#ffe6f1,transparent 35%),radial-gradient(circle at 80% 0%,#e8dcff,transparent 38%),#fff}
+.hero h2{font-size:clamp(2rem,5vw,3rem);margin:0 0 12px;color:var(--lav-dark)}
+.hero p{font-size:1.1rem;max-width:600px;margin:0 auto 22px;line-height:1.6}
+.section{padding:36px 5%;max-width:1100px;margin:auto}
+.section h2{text-align:center;color:var(--lav-dark);font-size:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;text-align:center;box-shadow:0 8px 24px #8e69a511}
+.product-art{height:145px;border-radius:16px;background:linear-gradient(145deg,#f0e6ff,#ffe8f1);display:grid;place-items:center;font-size:4rem;margin-bottom:14px}
+.card h3{margin:8px 0}.price{font-weight:bold;color:var(--lav-dark);font-size:1.2rem}
+.btn.primary{background:var(--lav-dark);color:white;margin-top:10px}
+.btn:hover,nav a:hover{transform:translateY(-1px)}
+.cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.cart-row button{border:0;background:#f8e9f4;color:#76539c;border-radius:8px;padding:6px 10px;cursor:pointer}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;max-width:760px;margin:18px auto}
+label{display:block;font-weight:bold;margin:12px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d9c8e9;border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:80px}
+.note{font-size:.92rem;line-height:1.5;color:#715e80;background:#f7f0ff;padding:14px;border-radius:12px}
+.total{font-size:1.3rem;font-weight:bold;text-align:right;margin-top:15px}
+footer{text-align:center;padding:30px;background:#f1e8ff;color:#76539c;margin-top:35px}
+.small{font-size:.85rem;color:#806d8d}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="brand">Charmberry</h1>
+  <p class="tag">♡ SMALL CRAFTS, BIG SMILES! ♡</p>
+  <nav><a href="#home">Home</a><a href="#shop">Shop</a><a href="#cart">Cart (<span id="cart-count">0</span>)</a><a href="#about">About</a></nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <h2>A little charm goes a long way ♡</h2>
+  <p>Find sweet little details to brighten your day. Shop cute keychains and sticker treats in Charmberry's pastel-inspired collection.</p>
+  <a class="btn primary" href="#shop">Shop the collection</a>
+</section>
+<section class="section" id="shop">
+  <h2>Shop Charmberry</h2>
+  <div class="grid">
+    <article class="card"><div class="product-art" aria-hidden="true">🎀</div><h3>Small Keychain</h3><p>Adorable everyday charm.</p><p class="price">$3.00</p><button class="btn primary" onclick="addToCart('Small Keychain',3)">Add to cart</button></article>
+    <article class="card"><div class="product-art" aria-hidden="true">💗</div><h3>Custom Keychain</h3><p>A personalized little favorite.</p><p class="price">$5.00</p><button class="btn primary" onclick="addToCart('Custom Keychain',5)">Add to cart</button></article>
+    <article class="card"><div class="product-art" aria-hidden="true">🍒</div><h3>Single Sticker</h3><p>A tiny pop of cuteness.</p><p class="price">$1.00</p><button class="btn primary" onclick="addToCart('Single Sticker',1)">Add to cart</button></article>
+    <article class="card"><div class="product-art" aria-hidden="true">✨</div><h3>Sticker Pack</h3><p>A bundle of happy little designs.</p><p class="price">$4.00</p><button class="btn primary" onclick="addToCart('Sticker Pack',4)">Add to cart</button></article>
+  </div>
+  <p class="small" style="text-align:center">Prices are product prices; shipping and any applicable taxes will be calculated separately when checkout is connected.</p>
+</section>
+<section class="section" id="cart">
+  <h2>Your Shopping Cart</h2>
+  <div class="panel"><div id="cart-items"><p>Your cart is waiting for something cute! ♡</p></div><div class="total" id="cart-total">Subtotal: $0.00</div><p class="small">Shipping and taxes are not included in this subtotal.</p><a class="btn primary" href="#checkout">Continue to checkout</a></div>
+</section>
+<section class="section" id="checkout">
+  <h2>Checkout</h2>
+  <div class="panel">
+    <p>Enter your delivery details below. Your order is not submitted until a secure payment provider is connected.</p>
+    <form id="checkout-form" onsubmit="submitOrder(event)">
+      <label for="customer">Name</label><input id="customer" name="customer" autocomplete="name" required>
+      <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="address">Street address</label><input id="address" name="address" autocomplete="street-address" required>
+      <label for="city">City</label><input id="city" name="city" autocomplete="address-level2" required>
+      <label for="state">State</label><input id="state" name="state" autocomplete="address-level1" required>
+      <label for="zip">ZIP code</label><input id="zip" name="zip" autocomplete="postal-code" required>
+      <label for="notes">Order notes (optional)</label><textarea id="notes" name="notes" placeholder="Custom details or a note for Charmberry"></textarea>
+      <div class="note" style="margin:16px 0"><strong>Secure online payments coming next:</strong> This starter site does not collect card numbers or process payments yet. Before accepting real orders, connect a payment provider such as Stripe or Shopify and test the checkout. Never ask customers to send card details by email or message.</div>
+      <button class="btn primary" type="submit">Review order details</button>
+    </form>
+    <p id="order-message" role="status" aria-live="polite"></p>
+  </div>
+</section>
+<section class="section" id="about"><h2>About Charmberry</h2><div class="panel" style="text-align:center"><p>Welcome to Charmberry! We believe small handmade details can bring big smiles. Thanks for supporting our little creative shop. ♡</p><p class="price">Small Crafts, Big Smiles!</p></div></section>
+</main>
+<footer>♡ Thank you for visiting Charmberry! ♡<br><span class="small">A cute little shop made with love.</span></footer>
+<script>
+let cart=[];
+function money(n){return '$'+n.toFixed(2)}
+function addToCart(name,price){let item=cart.find(x=>x.name===name);if(item)item.qty++;else cart.push({name,price,qty:1});renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth'});}
+function changeQty(name,delta){let item=cart.find(x=>x.name===name);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.name!==name);renderCart();}
+function renderCart(){let box=document.getElementById('cart-items');let count=cart.reduce((s,x)=>s+x.qty,0);document.getElementById('cart-count').textContent=count;if(!cart.length){box.innerHTML='<p>Your cart is waiting for something cute! ♡</p>';}else{box.innerHTML=cart.map(x=>`<div class="cart-row"><div><strong>${x.name}</strong><br><span class="small">${money(x.price)} each</span></div><div><button onclick="changeQty('${x.name}',-1)" aria-label="Remove one">−</button> ${x.qty} <button onclick="changeQty('${x.name}',1)" aria-label="Add one">+</button></div><strong>${money(x.price*x.qty)}</strong></div>`).join('');}let total=cart.reduce((s,x)=>s+x.price*x.qty,0);document.getElementById('cart-total').textContent='Subtotal: '+money(total);}
+function submitOrder(e){e.preventDefault();if(!cart.length){document.getElementById('order-message').textContent='Please add an item to your cart first.';return;}let f=new FormData(e.target);let summary=cart.map(x=>`${x.qty} x ${x.name} (${money(x.price*x.qty)})`).join(', ');document.getElementById('order-message').textContent='Order details reviewed for '+f.get('customer')+'. Items: '+summary+'. This is a preview only—no order was sent and no payment was taken. Connect a secure payment provider before launching checkout.';}
+renderCart();
+</script>
+</body>
+</html>
